@@ -9,8 +9,9 @@ public class Magazine extends Publication{
 	}
 	
 	public void showItemDetails() {
-		System.out.println("****** Magazine ID: " + this.ID + " ******");
+		System.out.println("****** Magazine ID: " + this.getID() + " ******");
 		super.showItemDetails();
 		System.out.println("Volume: " + this.volume);
+		System.out.println("-----------------------------------\n");
 	}
 }

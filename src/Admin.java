@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Admin extends User {
 
 	private String password;
@@ -16,13 +14,12 @@ public class Admin extends User {
 	}
 
 	protected boolean login() {
-		Scanner sc = new Scanner(System.in);
 
 		String userInput;
 		boolean isLogin = false;
 
 		System.out.println("Add your password: ");
-		userInput = sc.next();
+		userInput = MyShopMain.sc.nextLine();
 
 		if (userInput.equals(this.password))
 			isLogin = true;

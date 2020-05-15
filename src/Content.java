@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public abstract class Content {
 
-	protected String ID, name;
-	protected int itemDownloads = 0;
-	protected double price;
+	private String ID, name;
+	public int itemDownloads = 0;
+	public double price;
 
 	ArrayList<Comment> itemComments = new ArrayList<Comment>();
 
@@ -34,13 +34,24 @@ public abstract class Content {
 	}
 
 	protected void showDownloads() {
-		System.out.println(this.name + ": " + this.itemDownloads + " download(s)");
+		System.out.println("\n" + this.name + ": " + this.itemDownloads + " download(s)");
 	}
 
 	protected void setPrice(boolean isAdmin, double price) {
 		if (isAdmin) {
 			this.price = price;
+			System.out.println("Price has been set to: " + this.price + " for item " + this.name + "\n");
 		} else
 			System.out.println("Please enter your correct admin password");
 	}
+	
+	public String getID() {
+		return this.ID;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+
 }
+

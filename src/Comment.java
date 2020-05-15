@@ -30,10 +30,10 @@ public class Comment {
 		this.customer.showUserDetails();
 
 		if (this.commentMsg != null)
-			System.out.println("Comments: " + commentMsg);
+			System.out.println("   Comments: " + commentMsg);
 
 		if (this.rating != 0)
-			System.out.println("Ratings: " + this.rating);
+			System.out.println("   Ratings: " + this.rating);
 	}
 
 }

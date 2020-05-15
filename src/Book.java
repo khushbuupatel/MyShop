@@ -12,12 +12,13 @@ public class Book extends Publication{
 	}
 	
 	public void showItemDetails() {
-		System.out.println("****** Book ID: " + this.ID + " ******");
+		System.out.println("****** Book ID: " + this.getID() + " ******");
 		super.showItemDetails();
 		System.out.print("Author(s): ");
 		
 		for(String author : this.authors)
-			System.out.print(author + ", ");
-		System.out.println();
+			System.out.print(author + "  ");
+		
+		System.out.println("\n-----------------------------------\n");
 	}
 }

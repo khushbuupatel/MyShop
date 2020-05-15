@@ -1,8 +1,8 @@
 
 public class Publication extends Content{
 
-	protected String publisher;
-	protected int noOfPages;
+	private String publisher;
+	private int noOfPages;
 	
 	Publication(String ID, String name, double price, String publisher, int noOfPages) {
 		super(ID, name, price);

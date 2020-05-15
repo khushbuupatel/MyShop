@@ -27,7 +27,7 @@ public class Customer extends User {
 			itemToDownload.itemDownloads++;
 			isDownloaded = true;
 		} else {
-			System.out.println(this.username + " doesn't have suffient amount to download " + itemToDownload.name);
+			System.out.println(this.getUsername() + " doesn't have suffient amount to download " + itemToDownload.getName());
 		}
 
 		return isDownloaded;
@@ -48,11 +48,11 @@ public class Customer extends User {
 				item.itemDownloads++;
 			}
 		} else
-			System.out.println(this.username + " doesn't have suffient amount to download the item(s) ");
+			System.out.println(this.getUsername() + " doesn't have suffient amount to download the item(s) ");
 	}
 
 	protected void showDownloads() {
-		System.out.println("Total downloads by customer '" + this.username + "' are " + this.customerDownloads);
+		System.out.println("\nTotal downloads by customer '" + this.getUsername() + "' are " + this.customerDownloads + "\n");
 	}
 
 	protected void becomePremium() {
@@ -61,7 +61,8 @@ public class Customer extends User {
 			this.amount -= 100;
 			this.isPremium = true;
 		} else {
-			System.out.println(this.username + " doesn't have sufficient funds to become a premium member");
+			System.out.println(this.getUsername() + " doesn't have sufficient funds to become a premium member");
 		}
 	}
+
 }

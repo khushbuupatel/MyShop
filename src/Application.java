@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Application extends Content {
 
@@ -14,9 +13,10 @@ public class Application extends Content {
 	}
 
 	protected void showItemDetails() {
-		System.out.println("****** Application ID: " + this.ID + " ******");
+		System.out.println("****** Application ID: " + this.getID() + " ******");
 		super.showItemDetails();
 		System.out.println("Operating System: " + this.osType);
+		System.out.println("-----------------------------------\n");
 	}
 
 }
