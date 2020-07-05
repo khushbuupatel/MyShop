@@ -54,7 +54,7 @@ public class Customer extends User {
 	public void showUserDetails() {
 		super.showUserDetails();
 		System.out.println("Amount: " + this.amount);
-		System.out.println("Amount: " + this.phoneNo);
+		System.out.println("PhoneNo: " + this.phoneNo);
 		System.out.println("----------------------------");
 	}
 
@@ -133,12 +133,17 @@ public class Customer extends User {
 				this.customerDownloads++;
 				item.setItemDownload(item.getItemDownloads() + 1);
 
+				// add the content name in the customer
+				this.customerDownloadNames.add(item.getName());
+				
 				// display the name of items downloaded
 				System.out.println("-" + item.getName());
 			}
+			
+			System.out.println("Successfully downloaded above items for customer: " + this.getUsername());
 		} else {
 			// display following message if customer has insufficient funds
-			System.out.println(this.getUsername() + " doesn't have suffient amount to download the item(s) ");
+			System.out.println(this.getUsername() + " doesn't have suffient amount to bulk download the item(s) ");
 		}
 	}
 
@@ -167,10 +172,12 @@ public class Customer extends User {
 			this.amount -= 100;
 			this.isPremium = true;
 
-			System.out.println(this.getUsername() + " became a Premium customer!");
+			System.out.println("\n" + this.getUsername() + " became a Premium customer!");
+			System.out.println("Amount remaining after deduction of 100$: " + this.amount);
 
 		} else {
-			System.out.println(this.getUsername() + " doesn't have sufficient funds to become a premium member");
+			System.out.println("\n" + this.getUsername() + " doesn't have sufficient funds to become a premium member");
+			System.out.println("Amount available: " + this.amount);
 		}
 	}
 

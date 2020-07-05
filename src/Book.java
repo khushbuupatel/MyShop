@@ -27,14 +27,19 @@ public class Book extends Publication {
 	 * This method displays details of Book object
 	 */
 	public void showItemDetails() {
-
+		
+		// string to store the author names
+		String authorNames = "";
+		
 		System.out.println("****** Book ID: " + this.getID() + " ******");
 
 		super.showItemDetails();
 		System.out.print("Author(s): ");
 
 		for (String author : this.authors)
-			System.out.print(author + "  ");
+			authorNames += author + ", ";
+		
+		System.out.print(authorNames.substring(0, authorNames.length()-2) + "  ");
 
 		System.out.println("\n-----------------------------------");
 	}

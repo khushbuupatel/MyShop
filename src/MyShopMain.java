@@ -2,6 +2,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
+ * Till HD Level is implemented.
+ * 
  * MyShopMain is an online shop CLI application which allows users to download
  * mobile applications (APPs) and publications like e-books and digital
  * magazines. Applications and publication items in the MyShop are either free
@@ -42,8 +44,8 @@ public class MyShopMain {
 		// variable to store the main menu items
 		String[] menuContent = { "1.Show content", "2.Add content", "3.Show users", "4.Add users", "5.Change username",
 				"6.Show particular item reviews", "7.Show all reviews", "8.Download content",
-				"9.Show customer downloads", "10.Show item downloads", "11.Show all downloads", "12. Become premium",
-				"13.Show admin functionality", "14.Quit" };
+				"9.Show customer downloads", "10.Show item downloads", "11.Show all downloads in shop", "12. Become premium customer",
+				"13.Show admin functionalities", "14.Quit" };
 
 		// do while loop to display the menu to user until the user selects to quit
 		do {
@@ -79,12 +81,14 @@ public class MyShopMain {
 					addUser();
 					break;
 				case 5:
-					// changes the username of the customer of admin
+					// changes the username of the customer and admin
+					System.out.print("Username '" + customers[1].getUsername() + "'");
 					customers[1].changeName("neversaybye");
-					System.out.println("Username successfully changed to :" + customers[1].getUsername());
+					System.out.println(" successfully changed to :" + customers[1].getUsername());
 
+					System.out.print("Username '" + admins[1].getUsername() + "'");
 					admins[1].changeName("superblack");
-					System.out.println("Username successfully changed to :" + admins[1].getUsername());
+					System.out.println(" successfully changed to :" + admins[1].getUsername());
 					break;
 				case 6:
 					// shows reviews for particular items
@@ -102,11 +106,15 @@ public class MyShopMain {
 				case 9:
 					// displays downloads of a particular customer
 					System.out.println("\n******* Customer Downloads *******");
+					System.out.println("Note: If 0 downloads are there then please select option 8 to first download the content");
 					customers[0].showDownloads();
+					customers[1].showDownloads();
 					break;
 				case 10:
 					// displays downloads of a particular item
 					System.out.println("\n******* Item Downloads *******");
+					apps[0].showDownloads();
+					books[0].showDownloads();
 					magazines[0].showDownloads();
 					break;
 				case 11:
@@ -117,6 +125,8 @@ public class MyShopMain {
 				case 12:
 					// upgrades a customer to Premium customer
 					customers[2].becomePremium();
+					// customer[3] doesn't have sufficient fund to become a premium customer
+					customers[3].becomePremium();
 					break;
 				case 13:
 					// implements different admin functionality
@@ -130,7 +140,7 @@ public class MyShopMain {
 					System.out.println("Please select a valid option");
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("Invalid input entered");
+				System.out.println("\nInvalid input entered! Please add the item again. ");
 
 				// read the non numeric input entered by the user so that next
 				// int(selectedOption) can be read
@@ -173,19 +183,19 @@ public class MyShopMain {
 			// add new Application to MyShop
 			apps[appNo] = addItemDetails(itemType);
 			shop.addContent(apps[appNo++]);
-			System.out.println("New application is added!\n");
+			System.out.println("\nNew application is added!\nPlease select Show Content to display the newly added application.");
 			break;
 		case 2:
 			// add new Book to MyShop
 			books[bookNo] = addItemDetails(itemType);
 			shop.addContent(books[bookNo++]);
-			System.out.println("New book is added!\n");
+			System.out.println("\nNew book is added!\nPlease select Show Content to display the newly added book.");
 			break;
 		case 3:
 			// add new Magazine to MyShop
 			magazines[magazineNo] = addItemDetails(itemType);
 			shop.addContent(magazines[magazineNo++]);
-			System.out.println("New magazine is added!\n");
+			System.out.println("\nNew magazine is added!\nPlease select Show Content to display the newly added magazine.");
 			break;
 		default:
 			// display error message if invalid no entered by user
@@ -455,7 +465,7 @@ public class MyShopMain {
 		customers[3].download(magazines[0]);
 
 		// download many items in one go
-		System.out.println("Bulk Download: ");
+		System.out.println("\nBulk Download: ");
 
 		Content[] contentList = { books[0], books[1], books[2], magazines[0], apps[0], apps[1], apps[2] };
 		customers[1].download(contentList);
@@ -470,10 +480,16 @@ public class MyShopMain {
 		// read the space input (ENTER added after taking menu input from user)
 		sc.nextLine();
 
+		// admin[0] Username: "SuperBlack" Password: "opensesame"
+		// admin[1] Ussername: "Adele" password: "kitty123"
+		System.out.println("***The following code demonstrates the single item price update functionality.\n***");
+		
 		// an admin can reset the price for an item
 		books[0].setPrice(admins[0].login(), 14.25);
-		magazines[0].setPrice(admins[1].login(), 14.25);
+		magazines[0].setPrice(admins[1].login(), 10);
 
+		System.out.println("***The following code demonstrates the bulk price update functionality.\n***");
+		
 		// an admin with level > 5 bulk reduces all prices by 10%
 		shop.setPrice(admins[0].login(), admins[0].getLevel(), -0.10);
 

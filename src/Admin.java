@@ -54,7 +54,7 @@ public class Admin extends User {
 		String userInput;
 		boolean isLogin = false;
 
-		System.out.println("Please enter your password to change the price");
+		System.out.println( this.getUsername() + " please enter your password to change the price");
 
 		// ask user to enter admin password
 		System.out.println("Password: ");

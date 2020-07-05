@@ -72,11 +72,13 @@ public abstract class Content {
 
 			// update the price of the content
 			this.price = price;
+			
+			// display the price using 'this' to confirm that the price is updated
 			System.out.println("Price has been set to: " + this.price + " for item " + this.name + "\n");
 
 		} else {
 			// print error message if Admin login details are incorrect
-			System.out.println("Please enter your correct admin password");
+			System.out.println("Incorrect admin password!\n");
 		}
 	}
 

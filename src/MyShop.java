@@ -88,7 +88,7 @@ public class MyShop {
 	 * This method displays the reviews for all the contents of MyShop
 	 */
 	protected void showAllReviews() {
-		System.out.println("\nComments for Applications, Books and Magazines!\n");
+		System.out.println("\nReviews for Applications, Books and Magazines!\n");
 
 		// loop through all content of MyShop
 		for (Content content : contents) {
@@ -103,8 +103,8 @@ public class MyShop {
 	 * This method displays the no of downloads for each content of MyShop
 	 */
 	protected void showDownloads() {
-		System.out.println("\nNote: If no contents are downloaded then please "
-				+ "select option 7 to first download the contents");
+		System.out.println(
+				"Note: If no contents are downloaded then please " + "select option 8 to first download the contents");
 
 		// display total downloads for each content that has been download by any user
 		for (Content content : contents) {
@@ -125,24 +125,29 @@ public class MyShop {
 		double itemPrice;
 
 		// checks if the password is correct and that level is >5
-		if (isAdmin && level > 5) {
+		if (isAdmin) {
+			if (level > 5) {
 
-			// price for each and every content of MyShop is updated
-			for (Content content : contents) {
+				// price for each and every content of MyShop is updated
+				for (Content content : contents) {
 
-				// this will check if price is to be deducted than it should not go below 0.0
-				// and if price is to be added than it directly adds the price to original price
-				itemPrice = (price <= 0) && (content.getItemPrice() <= Math.abs(price)) ? 0.0
-						: content.getItemPrice() + price;
+					// this will check if price is to be deducted than it should not go below 0.0
+					// and if price is to be added than it directly adds the price to original price
+					itemPrice = (price <= 0) && (content.getItemPrice() <= Math.abs(price)) ? 0.0
+							: content.getItemPrice() + price;
 
-				// set the price
-				content.setItemPrice(itemPrice);
+					// set the price
+					content.setItemPrice(itemPrice);
+				}
+				System.out.println("Prices of all the items have been updated!\n");
+
+				// if the admin level <=5 than display the following message
+			} else {
+				System.out.println("You are not allowed to change the prices of the contents in"
+						+ " bulk as your admin level is less than 5");
 			}
-			System.out.println("Prices of all the items have been updated!\n");
-
-		// if the admin level <=5 than display the following message
-		} else
-			System.out.println(
-					"You are not allowed to change the prices of the contents in bulk as admin level is less than 5");
+		} else {
+			System.out.println("Incorrect password!");
+		}
 	}
 }

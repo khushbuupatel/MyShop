@@ -4,7 +4,7 @@
  */
 public abstract class User {
 
-	// variabls to store user details
+	// variables to store user details
 	private String userID, username;
 
 	/**
